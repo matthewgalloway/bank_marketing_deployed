@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from package.prediction_model.prediction_model.config import config
-from package.prediction_model.prediction_model import pipeline
-from package.prediction_model.prediction_model import save_pipeline
+import prediction_model.config
+from prediction_model import pipeline
+from prediction_model import save_pipeline
 
 import logging
 
