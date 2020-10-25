@@ -2,8 +2,8 @@ import pandas as pd
 import joblib
 from sklearn.pipeline import Pipeline
 
-from package.prediction_model.config import config
-from package.prediction_model import __version__ as _version
+from prediction_model.config import config
+from prediction_model import __version__ as _version
 
 import logging
 import typing as t

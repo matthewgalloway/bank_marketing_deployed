@@ -1,6 +1,6 @@
 from sklearn.pipeline import Pipeline
-from package.prediction_model.config import config
-from package.prediction_model.preprocessing import preprocessors as pp
+from package.prediction_model.prediction_model.config import config
+from package.prediction_model.prediction_model.preprocessing import preprocessors as pp
 from sklearn.ensemble import RandomForestClassifier
 
 
