@@ -20,8 +20,8 @@ class NumericalMinMaxNormalisation(BaseEstimator, TransformerMixin):
 			X[variable] = (X[variable] - min(X[variable])) / max(X[variable])
 
 
-class CategoricalImputer(BaseEstimator, TransformerMixin):
-    """Categorical data missing value imputer."""
+class CategoricalDummyEncoder(BaseEstimator, TransformerMixin):
+    """Categorical dummy variable creator value imputer."""
 
     def __init__(self, variables=None) -> None:
         if not isinstance(variables, list):
@@ -36,9 +36,4 @@ class CategoricalImputer(BaseEstimator, TransformerMixin):
 
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
         """Apply the transforms to the dataframe."""
-
-        X = X.copy()
-        for feature in self.variables:
-            X[feature] = X[feature].fillna("Missing")
-
-        return X
+        return pd.get_dummies(X, columns=self.variables)
