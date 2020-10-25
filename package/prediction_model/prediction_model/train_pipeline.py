@@ -1,9 +1,9 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from prediction_model.config import config
-from prediction_model import pipeline
-from prediction_model import save_pipeline
-from p
+from package.prediction_model.prediction_model.config import config
+from package.prediction_model.prediction_model import pipeline
+from package.prediction_model.prediction_model import save_pipeline
+
 import logging
 
 _logger = logging.getLogger(__name__)
