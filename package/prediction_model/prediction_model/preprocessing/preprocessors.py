@@ -1,39 +1,47 @@
-
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
+
 class NumericalMinMaxNormalisation(BaseEstimator, TransformerMixin):
 	"""Applies min max scaling to numerical values """
+
 	def __init__(self, variables=None) -> None:
 		if not isinstance(variables, list):
 			self.variables = [variables]
 		else:
 			self.variables = variables
-	def fit(self, X: pd.DataFrame, y: pd.Series=None)-> "NumericalMinMaxNormalisation":
+
+	def fit(self, X: pd.DataFrame, y: pd.Series = None) -> "NumericalMinMaxNormalisation":
 		""""fit statement to intergrate with Sklearn pipeline"""
 		return self
 
 	def transform(self, X: pd.DataFrame) -> pd.DataFrame:
 		"""Apply the transforms to the dataframe."""
 
-		for variable in self.varibles:
+		for variable in self.variables:
 			X[variable] = (X[variable] - min(X[variable])) / max(X[variable])
+		return X
+
 
 
 class CategoricalDummyEncoder(BaseEstimator, TransformerMixin):
-    """Categorical dummy variable creator value imputer."""
+	"""Categorical dummy variable creator value imputer."""
 
-    def __init__(self, variables=None) -> None:
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
+	def __init__(self, variables=None) -> None:
+		if not isinstance(variables, list):
+			self.variables = [variables]
+		else:
+			self.variables = variables
 
-    def fit(self, X: pd.DataFrame, y: pd.Series = None) -> "CategoricalImputer":
-        """Fit statement to accomodate the sklearn pipeline."""
+	def fit(self, X: pd.DataFrame, y: pd.Series = None) -> "CategoricalDummyEncoder":
+		"""Fit statement to accomodate the sklearn pipeline."""
 
-        return self
+		return self
 
-    def transform(self, X: pd.DataFrame) -> pd.DataFrame:
-        """Apply the transforms to the dataframe."""
-        return pd.get_dummies(X, columns=self.variables)
+	def transform(self, X: pd.DataFrame) -> pd.DataFrame:
+		"""Apply the transforms to the dataframe."""
+		X = X.copy()
+		return pd.get_dummies(X, columns=self.variables)
+
+
+

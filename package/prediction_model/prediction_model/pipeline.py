@@ -1,6 +1,6 @@
 from sklearn.pipeline import Pipeline
-from package.prediction_model.prediction_model.config import config
-from package.prediction_model.prediction_model.preprocessing import preprocessors as pp
+from prediction_model.config import config
+from prediction_model.preprocessing import preprocessors as pp
 from sklearn.ensemble import RandomForestClassifier
 
 
@@ -18,6 +18,9 @@ prediction_pipe = Pipeline(
             "Categorical_Dummies",
             pp.CategoricalDummyEncoder(variables=config.CATEGORICAL_VARS),
         ),
-        ("RF_model", RandomForestClassifier(min_samples_leaf=1, random_state=0)),
+        (
+            "RF_model", RandomForestClassifier(min_samples_leaf=1, random_state=0)
+        )
     ]
 )
+
