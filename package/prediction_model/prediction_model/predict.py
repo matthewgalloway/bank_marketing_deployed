@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from prediction_model.preprocessing.data_management import load_pipeline
+from prediction_model.preprocessing.validation import validate_inputs
 from prediction_model.config import config
 from prediction_model import __version__ as _version
 
@@ -27,8 +28,8 @@ def make_prediction(*, input_data: t.Union[pd.DataFrame, dict],
     """
 
     data = pd.DataFrame(input_data)
-
-    prediction = _prediction_pipe.predict(data[config.FEATURES])
+    validated_data = validate_inputs(input_data=data)
+    prediction = _prediction_pipe.predict(validated_data[config.FEATURES])
 
     output = np.exp(prediction)
 
