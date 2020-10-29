@@ -23,6 +23,7 @@ CATEGORICAL_VARS = [
 ]
 
 TRAIN_DATASET_DIR = DATASET_DIR/'train.csv'
+TEST_DATASET_DIR = DATASET_DIR/'test.csv'
 
 FEATURES = ['age',
 			'job',

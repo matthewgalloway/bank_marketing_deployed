@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from prediction_model.processing.data_management import load_pipeline
+from prediction_model.preprocessing.data_management import load_pipeline
 from prediction_model.config import config
 from prediction_model import __version__ as _version
 
